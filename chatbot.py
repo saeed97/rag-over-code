@@ -16,7 +16,7 @@ if user_key:
 #     user_key = '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'
 #     os.environ['OPENAI_API_KEY'] = user_key
 
-    user_repo = st.text_input("Github Link to your public codebase", "https://github.com/saeed97/RuptTechnicalChallenge.git")
+    user_repo = st.text_input("Github Link to your public codebase", "https://github.com/saeed97/mycodebase.git")
     if user_repo:
         st.write("You entered:", user_repo)
 
