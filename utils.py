@@ -17,6 +17,9 @@ from langchain.document_loaders.generic import GenericLoader
 from langchain.document_loaders.parsers import LanguageParser
 from langchain.text_splitter import Language
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.chains import ConversationalRetrievalChain
+from langchain.chat_models import ChatOpenAI
+from langchain.memory import ConversationSummaryMemory
 
 model_name = "sentence-transformers/all-MiniLM-L6-v2"
 model_kwargs = {"device": "cpu"}
@@ -132,11 +135,7 @@ class Embedder:
         # result = qa({"question": query, "chat_history": chat_history})
         # self.add_to_queue((query, result["answer"]))
         # return result['answer']
-    
-        from langchain.chains import ConversationalRetrievalChain
-        from langchain.chat_models import ChatOpenAI
-        from langchain.memory import ConversationSummaryMemory
-
+        
         llm = ChatOpenAI(model_name="gpt-4")
         memory = ConversationSummaryMemory(
             llm=llm, memory_key="chat_history", return_messages=True
